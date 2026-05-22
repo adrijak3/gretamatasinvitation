@@ -90,32 +90,8 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
               </svg>
             </div>
 
-            {/* Seal / monogram bubble — clickable */}
-            <button
-              type="button"
-              onClick={handleSealClick}
-              aria-label="Burbuliukas"
-              className="absolute left-1/2 top-[36%] z-30 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-chocolate/50 bg-pearl shadow-[0_8px_24px_hsl(var(--chocolate)/0.35)] transition-transform duration-300 hover:scale-105 active:scale-95 sm:h-20 sm:w-20"
-            >
-              <span className="font-display text-base tracking-[0.15em] text-chocolate sm:text-lg">
-                G&amp;M
-              </span>
-              {burst && (
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 grid place-items-center"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="hsl(var(--chocolate))"
-                    className="h-10 w-10 animate-heart-pop sm:h-12 sm:w-12"
-                  >
-                    <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.5-9.5 9-9.5 9z" />
-                  </svg>
-                </span>
-              )}
-            </button>
           </button>
+
         </div>
       </div>
     </div>
