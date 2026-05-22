@@ -7,7 +7,6 @@ type OpeningLetterProps = {
 
 export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
   const [opening, setOpening] = useState(false);
-  const [burst, setBurst] = useState(false);
 
   const handleOpen = () => {
     if (opening) return;
@@ -15,12 +14,7 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
     setTimeout(() => onOpen(), 2200);
   };
 
-  const handleSealClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (opening) return;
-    setBurst(true);
-    setTimeout(() => setBurst(false), 900);
-  };
+
 
   return (
     <div
