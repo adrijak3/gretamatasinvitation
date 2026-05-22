@@ -31,20 +31,21 @@ const Polaroid = ({ name, role, rotate, imgSrc }: PolaroidProps) => (
 );
 
 export const Polaroids = () => (
-  <section className="relative overflow-hidden bg-vellum py-20">
-    <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--copper)/0.08),transparent_60%)]" />
+  <section className="relative overflow-hidden bg-vellum py-14">
+    <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--chocolate)/0.06),transparent_60%)]" />
 
     <div className="container relative mx-auto px-6 text-center">
-      <p className="font-display italic text-3xl uppercase tracking-[0.45em] text-copper">Atpažįstate šiuos mažuosius?</p>
-      <h2 className="mt-2 font-display text-5xl font-semibold text-moss-deep sm:text-6xl">Tai mes vaikystėje!</h2>
+      <p className="font-display italic text-xs uppercase tracking-[0.4em] text-chocolate sm:text-sm">Atpažįstate šiuos mažuosius?</p>
+      <h2 className="mt-1 font-display text-lg font-medium text-chocolate sm:text-xl">Tai mes vaikystėje</h2>
 
-      <div className="mt-12 flex flex-wrap items-center justify-center gap-6">
-        <Polaroid name="Greta" role="Nuotaka" rotate="-rotate-6" />
-        <div className="hidden text-copper sm:block">
-          <Heart className="h-7 w-7 fill-copper/30" />
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+        <Polaroid name="Greta" role="Jaunoji" rotate="-rotate-6" />
+        <div className="hidden text-chocolate sm:block">
+          <Heart className="h-7 w-7 fill-chocolate/30" />
         </div>
         <Polaroid name="Matas" role="Jaunikis" rotate="rotate-6" imgSrc={groomChild} />
       </div>
     </div>
   </section>
 );
+
