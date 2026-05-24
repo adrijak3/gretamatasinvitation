@@ -52,25 +52,12 @@ const WaveDivider = ({ flip = false, fill = "hsl(var(--vellum))" }: { flip?: boo
 
 export const WeddingContent = () => (
   <main className="relative z-20">
-    {/* Invitation message */}
-    <section className="container mx-auto max-w-3xl px-6 pb-6 pt-10 text-center animate-fade-in-slow">
-      <p className="font-display text-lg leading-8 text-chocolate sm:text-xl">
-        Atrodo, visai neseniai žengėme pirmuosius žingsnius, o
-        <span className="whitespace-nowrap"> 2026-09-06 </span>
-        kviečiame Jus tapti vieno svarbiausių mūsų gyvenimo įvykių liudininkais.
-      </p>
-    </section>
-
-
-    <section className="container mx-auto grid content-center gap-12 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+    <section className="container mx-auto grid content-center gap-12 px-6 pt-16 pb-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
       <div className="animate-reveal">
         <p className="font-display italic text-4xl text-chocolate sm:text-5xl lg:text-6xl">Kviečiame mums svarbią dieną būti kartu</p>
         <h2 className="mt-3 max-w-3xl font-display text-6xl font-semibold leading-[0.88] text-chocolate sm:text-7xl lg:text-8xl">
           Greta &amp; Matas
         </h2>
-        <p className="mt-8 max-w-2xl text-lg leading-8 text-chocolate/80 sm:text-xl">
-          Norime Jus pakviesti į savo meilės šventę — su žmonėmis, kurie mums brangūs.
-        </p>
       </div>
       <div className="paper-grain relative overflow-hidden border border-chocolate/30 bg-vellum p-7 animate-fade-in-slow hover:shadow-[0_36px_90px_hsl(var(--chocolate)/0.25)] transition-shadow duration-500 shadow-[0_30px_80px_hsl(var(--chocolate)/0.18)]">
         <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full border border-chocolate/20" />
@@ -94,7 +81,18 @@ export const WeddingContent = () => (
       </div>
     </section>
 
+    {/* Polaroids + invitation message grouped */}
+    <Polaroids />
+    <section className="container mx-auto max-w-3xl px-6 pb-12 pt-2 text-center animate-fade-in-slow">
+      <p className="font-display text-lg leading-8 text-chocolate sm:text-xl">
+        Atrodo, visai neseniai žengėme pirmuosius žingsnius, o
+        <span className="whitespace-nowrap"> 2026-09-06 </span>
+        kviečiame Jus tapti vieno svarbiausių mūsų gyvenimo įvykių liudininkais.
+      </p>
+    </section>
+
     <Countdown />
+
 
     <WaveDivider fill="hsl(var(--vellum))" />
 
@@ -150,7 +148,7 @@ export const WeddingContent = () => (
       </div>
     </section>
 
-    <Polaroids />
+
 
 
 
