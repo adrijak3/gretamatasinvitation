@@ -52,17 +52,15 @@ const WaveDivider = ({ flip = false, fill = "hsl(var(--vellum))" }: { flip?: boo
 
 export const WeddingContent = () => (
   <main className="relative z-20">
-    {/* Polaroids — first thing after opening */}
-    <Polaroids />
-
     {/* Invitation message */}
-    <section className="container mx-auto max-w-3xl px-6 pb-6 pt-2 text-center animate-fade-in-slow">
+    <section className="container mx-auto max-w-3xl px-6 pb-6 pt-10 text-center animate-fade-in-slow">
       <p className="font-display text-lg leading-8 text-chocolate sm:text-xl">
         Atrodo, visai neseniai žengėme pirmuosius žingsnius, o
         <span className="whitespace-nowrap"> 2026-09-06 </span>
         kviečiame Jus tapti vieno svarbiausių mūsų gyvenimo įvykių liudininkais.
       </p>
     </section>
+
 
     <section className="container mx-auto grid content-center gap-12 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
       <div className="animate-reveal">
@@ -151,6 +149,10 @@ export const WeddingContent = () => (
         })}
       </div>
     </section>
+
+    <Polaroids />
+
+
 
     <WaveDivider fill="hsl(var(--chocolate))" />
 
