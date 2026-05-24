@@ -150,6 +150,10 @@ export const WeddingContent = () => (
       </div>
     </section>
 
+    <Polaroids />
+
+
+
     <WaveDivider fill="hsl(var(--chocolate))" />
 
     <section id="details" className="bg-chocolate py-20 text-pearl">
