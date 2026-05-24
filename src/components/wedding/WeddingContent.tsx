@@ -148,7 +148,7 @@ export const WeddingContent = () => (
       </div>
     </section>
 
-    <Polaroids />
+
 
 
 
