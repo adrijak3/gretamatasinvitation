@@ -89,9 +89,6 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                 />
                 <g>
                   <circle cx="250" cy="150" r="22" fill="url(#waxSeal)" stroke="#5a3f10" strokeWidth="1.2" />
-                  <text x="250" y="157" textAnchor="middle" fontFamily="serif" fontStyle="italic" fontSize="18" fill="#3a2708" fontWeight="600">
-                    G&amp;M
-                  </text>
                 </g>
               </svg>
             </div>
