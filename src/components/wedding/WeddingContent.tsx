@@ -170,6 +170,7 @@ export const WeddingContent = () => (
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Gift className="h-7 w-7 text-copper-glow" />
           <h3 className="mt-5 font-display text-3xl">Dovanos</h3>
+          <p className="mt-3 text-pearl/75">Mielai išsirinksime patys.</p>
         </article>
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Mail className="h-7 w-7 text-copper-glow" />
