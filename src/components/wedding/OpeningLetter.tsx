@@ -50,15 +50,14 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
           >
             {/* Envelope body — clean outline only */}
             <div className="relative aspect-[5/3.35] w-full overflow-hidden rounded-sm border-2 border-chocolate/40 bg-[linear-gradient(180deg,hsl(var(--pearl)),hsl(var(--vellum)))] shadow-[0_32px_80px_hsl(var(--chocolate)/0.30)] transition-shadow duration-500 group-hover:shadow-[0_38px_100px_hsl(var(--chocolate)/0.40)]">
-              {/* date initials on envelope */}
               <div className="absolute inset-x-0 bottom-6 z-10 text-center">
                 <p className="font-display text-2xl tracking-[0.32em] text-chocolate sm:text-3xl">
-                  26 · 09 · 06
+                  2026.09.06
                 </p>
               </div>
             </div>
 
-            {/* Envelope flap with triangle outline */}
+            {/* Envelope flap with triangle outline + wax seal */}
             <div
               className={`absolute -top-px left-0 right-0 z-20 origin-top transition-transform duration-1000 ${
                 opening ? "[transform:rotateX(-180deg)]" : ""
@@ -74,6 +73,13 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                 className="absolute inset-0 h-full w-full"
                 preserveAspectRatio="none"
               >
+                <defs>
+                  <radialGradient id="waxSeal" cx="40%" cy="35%" r="65%">
+                    <stop offset="0%" stopColor="#f5d98a" />
+                    <stop offset="45%" stopColor="#c9a14a" />
+                    <stop offset="100%" stopColor="#7a5a1c" />
+                  </radialGradient>
+                </defs>
                 <path
                   d="M2,2 L498,2 L250,168 Z"
                   fill="hsl(var(--pearl))"
@@ -81,6 +87,12 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                   strokeWidth="2.5"
                   strokeLinejoin="round"
                 />
+                <g>
+                  <circle cx="250" cy="150" r="22" fill="url(#waxSeal)" stroke="#5a3f10" strokeWidth="1.2" />
+                  <text x="250" y="157" textAnchor="middle" fontFamily="serif" fontStyle="italic" fontSize="18" fill="#3a2708" fontWeight="600">
+                    G&amp;M
+                  </text>
+                </g>
               </svg>
             </div>
 
