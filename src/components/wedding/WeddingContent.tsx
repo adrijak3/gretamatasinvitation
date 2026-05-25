@@ -38,8 +38,8 @@ const ManIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const timeline = [
   { time: "14:40", title: "Atvykimas", icon: Church, text: "Prašome atvykti anksčiau prieš santuokos ceremonijos pradžią." },
   { time: "15:00", title: "Santuokos ceremonija", icon: Rings, text: "Šv. Kazimiero bažnyčia, Vilnius." },
-  { time: "16:30", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką." },
-  { time: "18:00–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N20)." },
+  { time: "16:30", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką bažnyčios kiemelyje." },
+  { time: "18:00–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N-20)." },
 ];
 
 const WaveDivider = ({ flip = false, fill = "hsl(var(--vellum))" }: { flip?: boolean; fill?: string }) => (
