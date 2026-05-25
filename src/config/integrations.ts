@@ -43,4 +43,4 @@
 // reikia "Deploy → Manage deployments → Edit → New version".
 
 export const GOOGLE_SHEETS_WEBHOOK_URL =
-  "https://script.google.com/macros/s/AKfycbyB0RjVkVjEdeY90TJCAcIvqn-owH0atk3VowXmDM1xJ3yBxobL3AHxprCOX9zLd2mtiQ/exec";
+  "https://script.google.com/macros/s/AKfycbxXOAAOc4ifp9ba-nzXx4X17t-vVZ5O7Ftl-HFSMB_BojGW3Bfs5Z_7eX92Y9PfZ1s_8Q/exec";
