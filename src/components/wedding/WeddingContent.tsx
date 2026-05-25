@@ -38,8 +38,8 @@ const ManIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const timeline = [
   { time: "14:40", title: "Atvykimas", icon: Church, text: "Prašome atvykti anksčiau prieš santuokos ceremonijos pradžią." },
   { time: "15:00", title: "Santuokos ceremonija", icon: Rings, text: "Šv. Kazimiero bažnyčia, Vilnius." },
-  { time: "16:30", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką." },
-  { time: "18:00–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N20)." },
+  { time: "16:30", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką bažnyčios kiemelyje." },
+  { time: "18:00–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N-20)." },
 ];
 
 const WaveDivider = ({ flip = false, fill = "hsl(var(--vellum))" }: { flip?: boolean; fill?: string }) => (
@@ -159,40 +159,27 @@ export const WeddingContent = () => (
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Sparkles className="h-7 w-7 text-copper-glow" />
           <h3 className="mt-5 font-display text-3xl">Aprangos kodas</h3>
-          <p className="mt-3 text-pearl/75">Venkite baltos, šampano, smėlio ir kreminių tonų — šios spalvos rezervuotos jaunajai.</p>
-          <div className="mt-6 grid grid-cols-2 gap-4">
-            <div className="flex items-start gap-3">
-              <WomanIcon className="mt-1 h-9 w-9 text-copper-glow" />
-              <div>
-                <p className="font-display text-xl text-pearl">Moterys</p>
-                <p className="mt-1 text-sm leading-6 text-pearl/70">Ilgos vakarinės suknelės — sodrūs, gilūs tonai.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <ManIcon className="mt-1 h-9 w-9 text-copper-glow" />
-              <div>
-                <p className="font-display text-xl text-pearl">Vyrai</p>
-                <p className="mt-1 text-sm leading-6 text-pearl/70">Kostiumai arba švarkai — klasikiniai, elegantiški.</p>
-              </div>
-            </div>
-          </div>
+          <p className="mt-2 font-display text-lg italic text-copper-glow">Black Tie Optional</p>
+          <p className="mt-3 text-pearl/75">
+            Kviečiame rinktis elegantišką formalų vakaro stilių. Spalvų paletės neribosime.
+          </p>
+          <p className="mt-3 text-sm italic text-pearl/65">
+            Merginoms — maloniai prašome vengti baltos, šampaninės bei kreminės spalvos atspalvių; šios spalvos rezervuotos jaunajai.
+          </p>
         </article>
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Gift className="h-7 w-7 text-copper-glow" />
-          <h3 className="mt-5 font-display text-3xl">Dovanos 💐</h3>
-          <p className="mt-3 text-pearl/75">
-            ✉️ Vietoje gėlių mielai apsidžiaugtumėme putojančiu / mėgstamu gėrimu arba dovana vokelyje.
-          </p>
+          <h3 className="mt-5 font-display text-3xl">Dovanos</h3>
         </article>
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Mail className="h-7 w-7 text-copper-glow" />
           <h3 className="mt-5 font-display text-3xl">Dalyvavimas</h3>
           <p className="mt-3 text-pearl/75">
             Atsakymo lauksime iki 2026 m. liepos 6 d.
-            <br />Po šios datos registracija antrajai šventės daliai užsidarys.
+            <br />Po šios datos registracija vakarinei šventės daliai užsidarys.
           </p>
           <p className="mt-3 text-sm italic text-pearl/60">
-            Nesulaukę atsakymo, suprasime, kad nedalyvausite antroje dalyje.
+            Nesulaukę atsakymo, suprasime, kad vakarinėje dalyje nedalyvausite.
           </p>
         </article>
       </div>
