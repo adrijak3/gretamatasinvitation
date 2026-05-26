@@ -1,4 +1,5 @@
 import { useState } from "react";
+import waxSeal from "@/assets/wax-seal.png";
 
 type OpeningLetterProps = {
   greeting: string;
