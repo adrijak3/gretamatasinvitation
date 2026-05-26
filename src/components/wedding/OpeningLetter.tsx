@@ -94,7 +94,6 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                   filter: "drop-shadow(0 6px 8px rgba(30, 45, 25, 0.45)) drop-shadow(0 1px 2px rgba(0,0,0,0.25))",
                 }}
               />
-              </svg>
             </div>
 
           </button>
