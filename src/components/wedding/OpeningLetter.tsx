@@ -74,18 +74,6 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                 className="absolute inset-0 h-full w-full"
                 preserveAspectRatio="none"
               >
-                <defs>
-                  <radialGradient id="waxSeal" cx="38%" cy="32%" r="72%">
-                    <stop offset="0%" stopColor="#9ab58a" />
-                    <stop offset="35%" stopColor="#5e7a4f" />
-                    <stop offset="75%" stopColor="#3a5230" />
-                    <stop offset="100%" stopColor="#22361c" />
-                  </radialGradient>
-                  <radialGradient id="waxHighlight" cx="35%" cy="28%" r="35%">
-                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.55" />
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
                 <path
                   d="M2,2 L498,2 L250,168 Z"
                   fill="hsl(var(--pearl))"
@@ -93,19 +81,19 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                   strokeWidth="2.5"
                   strokeLinejoin="round"
                 />
-                <g>
-                  {/* drip shadow */}
-                  <ellipse cx="250" cy="156" rx="30" ry="6" fill="#1a2814" opacity="0.35" />
-                  {/* main wax blob with irregular edge */}
-                  <path
-                    d="M250,124 C266,124 280,134 280,150 C281,158 274,166 268,168 C262,172 256,170 250,170 C244,170 238,172 232,168 C226,166 219,158 220,150 C220,134 234,124 250,124 Z"
-                    fill="url(#waxSeal)"
-                    stroke="#1f2f17"
-                    strokeWidth="1"
-                  />
-                  {/* highlight for realism */}
-                  <ellipse cx="244" cy="142" rx="10" ry="6" fill="url(#waxHighlight)" />
-                </g>
+              </svg>
+              {/* Real wax seal image, anchored at the triangle tip */}
+              <img
+                src={waxSeal}
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 -translate-x-1/2"
+                style={{
+                  bottom: "-8%",
+                  width: "22%",
+                  filter: "drop-shadow(0 6px 8px rgba(30, 45, 25, 0.45)) drop-shadow(0 1px 2px rgba(0,0,0,0.25))",
+                }}
+              />
               </svg>
             </div>
 
