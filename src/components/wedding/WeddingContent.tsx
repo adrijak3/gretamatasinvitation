@@ -226,7 +226,7 @@ export const WeddingContent = () => (
         <p className="font-display italic text-3xl uppercase tracking-[0.45em] text-chocolate">Klausimai</p>
         <div className="mt-8 divide-y divide-chocolate/15 border-y border-chocolate/15 bg-vellum">
           {[
-            ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti bent 15 min. anksčiau.\nPo ceremonijos kviesime pakelti taurę šampano bažnyčios kiemelyje, kol mes išvyksime į trumpą fotosesiją.\nRestorane „Elven“ susitiksime 18:00 — pasitiksime Jus taure ir užkandžiais, o netrukus grįšime ir mes."],
+            ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti bent 15 min. anksčiau.\nRestorane „Elven“ susitiksime 18:00 — pasitiksime Jus taure ir užkandžiais."],
             ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje.\nTačiau vakarinė dalis restorane skirta tik suaugusiems."],
             ["Iki kada atsakyti?", "Dalyvavimą kviečiame patvirtinti iki 2026 m. liepos 6 d.\nPo šios datos registracija užsidarys."],
           ].map(([question, answer]) => (
