@@ -36,7 +36,6 @@ const ManIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const timeline = [
-  { time: "14:40", title: "Atvykimas", icon: Church, text: "Prašome atvykti anksčiau prieš santuokos ceremonijos pradžią." },
   { time: "15:00", title: "Santuokos ceremonija", icon: Rings, text: "Šv. Kazimiero bažnyčia, Vilnius." },
   { time: "16:30", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką bažnyčios kiemelyje." },
   { time: "18:00–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N-20)." },
@@ -83,8 +82,8 @@ export const WeddingContent = () => (
 
     {/* Polaroids + invitation message grouped */}
     <Polaroids />
-    <section className="container mx-auto max-w-3xl px-6 pb-12 pt-2 text-center animate-fade-in-slow">
-      <p className="font-display text-lg leading-8 text-chocolate sm:text-xl">
+    <section className="container mx-auto max-w-2xl px-6 pb-12 pt-6 text-center animate-fade-in-slow">
+      <p className="mx-auto font-display text-lg leading-8 text-chocolate sm:text-xl">
         Atrodo, visai neseniai žengėme pirmuosius žingsnius, o
         <span className="whitespace-nowrap"> 2026-09-06 </span>
         kviečiame Jus tapti vieno svarbiausių mūsų gyvenimo įvykių liudininkais.
@@ -159,17 +158,20 @@ export const WeddingContent = () => (
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Sparkles className="h-7 w-7 text-copper-glow" />
           <h3 className="mt-5 font-display text-3xl">Aprangos kodas</h3>
-          <p className="mt-2 font-display text-lg italic text-copper-glow">Black Tie Optional</p>
+          <p className="mt-2 font-display text-lg italic text-copper-glow">Black Tie / Formal</p>
           <p className="mt-3 text-pearl/75">
-            Kviečiame rinktis elegantišką formalų vakaro stilių. Spalvų paletės neribosime.
+            Kviečiame rinktis elegantišką formalų vakaro stilių.
           </p>
           <p className="mt-3 text-sm italic text-pearl/65">
             Merginoms — maloniai prašome vengti baltos, šampaninės bei kreminės spalvos atspalvių; šios spalvos rezervuotos jaunajai.
           </p>
         </article>
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
-          <Gift className="h-7 w-7 text-copper-glow" />
-          <p className="mt-5 text-pearl/75">Dovanas mielai išsirinksime patys</p>
+          <Mail className="h-7 w-7 text-copper-glow" />
+          <p className="mt-5 text-pearl/80">
+            Vietoje gėlių džiugintų putojantis ar Jūsų mėgstamas gėrimas,
+            <br />o materialūs palinkėjimai kukliai telpa vokelyje. ✉
+          </p>
         </article>
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Mail className="h-7 w-7 text-copper-glow" />
@@ -179,7 +181,7 @@ export const WeddingContent = () => (
             <br />Po šios datos registracija vakarinei šventės daliai užsidarys.
           </p>
           <p className="mt-3 text-sm italic text-pearl/60">
-            Nesulaukę atsakymo, suprasime, kad vakarinėje dalyje nedalyvausite.
+            Nesulaukę atsakymo, suprasime, kad vakarinėje šventės dalyje nedalyvausite.
           </p>
         </article>
       </div>
@@ -224,8 +226,8 @@ export const WeddingContent = () => (
         <p className="font-display italic text-3xl uppercase tracking-[0.45em] text-chocolate">Klausimai</p>
         <div className="mt-8 divide-y divide-chocolate/15 border-y border-chocolate/15 bg-vellum">
           {[
-            ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti 15 min. anksčiau. Restorane lauksime nuo 18:00 su pasitikimo taure ir užkandžiais, kol jaunieji grįš iš fotosesijos."],
-            ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje, tačiau vakarinė dalis restorane skirta tik suaugusiems."],
+            ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti bent 15 min. anksčiau.\nRestorane lauksime nuo 18:00 su pasitikimo taure ir užkandžiais."],
+            ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje,\nkol grįšime iš fotosesijos.\nTačiau vakarinė dalis restorane skirta tik suaugusiems."],
             ["Iki kada atsakyti?", "Dalyvavimą kviečiame patvirtinti iki 2026 m. liepos 6 d.\nPo šios datos registracija užsidarys."],
           ].map(([question, answer]) => (
             <details key={question} className="group p-5">

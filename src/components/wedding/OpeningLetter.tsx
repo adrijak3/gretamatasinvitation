@@ -74,10 +74,15 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                 preserveAspectRatio="none"
               >
                 <defs>
-                  <radialGradient id="waxSeal" cx="40%" cy="35%" r="65%">
-                    <stop offset="0%" stopColor="#f5d98a" />
-                    <stop offset="45%" stopColor="#c9a14a" />
-                    <stop offset="100%" stopColor="#7a5a1c" />
+                  <radialGradient id="waxSeal" cx="38%" cy="32%" r="72%">
+                    <stop offset="0%" stopColor="#9ab58a" />
+                    <stop offset="35%" stopColor="#5e7a4f" />
+                    <stop offset="75%" stopColor="#3a5230" />
+                    <stop offset="100%" stopColor="#22361c" />
+                  </radialGradient>
+                  <radialGradient id="waxHighlight" cx="35%" cy="28%" r="35%">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.55" />
+                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
                   </radialGradient>
                 </defs>
                 <path
@@ -88,7 +93,17 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                   strokeLinejoin="round"
                 />
                 <g>
-                  <circle cx="250" cy="150" r="22" fill="url(#waxSeal)" stroke="#5a3f10" strokeWidth="1.2" />
+                  {/* drip shadow */}
+                  <ellipse cx="250" cy="156" rx="30" ry="6" fill="#1a2814" opacity="0.35" />
+                  {/* main wax blob with irregular edge */}
+                  <path
+                    d="M250,124 C266,124 280,134 280,150 C281,158 274,166 268,168 C262,172 256,170 250,170 C244,170 238,172 232,168 C226,166 219,158 220,150 C220,134 234,124 250,124 Z"
+                    fill="url(#waxSeal)"
+                    stroke="#1f2f17"
+                    strokeWidth="1"
+                  />
+                  {/* highlight for realism */}
+                  <ellipse cx="244" cy="142" rx="10" ry="6" fill="url(#waxHighlight)" />
                 </g>
               </svg>
             </div>
