@@ -169,21 +169,20 @@ export const WeddingContent = () => (
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Mail className="h-7 w-7 text-copper-glow" />
           <p className="mt-5 text-pearl/80">
-            Vietoje gėlių džiugintų putojantis ar Jūsų mėgstamas gėrimas,
-            <br />o materialūs palinkėjimai kukliai telpa vokelyje. ✉
+            Vietoje gėlių džiugintų putojantis ar Jūsų mėgstamas gėrimas, o materialūs palinkėjimai kukliai telpa vokelyje.
           </p>
         </article>
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Mail className="h-7 w-7 text-copper-glow" />
           <h3 className="mt-5 font-display text-3xl">Dalyvavimas</h3>
           <p className="mt-3 text-pearl/75">
-            Atsakymo lauksime iki 2026 m. liepos 6 d.
-            <br />Po šios datos registracija vakarinei šventės daliai užsidarys.
+            Atsakymo lauksime iki 2026 m. liepos 6 d. Po šios datos registracija vakarinei šventės daliai užsidarys.
           </p>
           <p className="mt-3 text-sm italic text-pearl/60">
             Nesulaukę atsakymo, suprasime, kad vakarinėje šventės dalyje nedalyvausite.
           </p>
         </article>
+
       </div>
     </section>
 
