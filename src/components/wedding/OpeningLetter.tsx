@@ -79,9 +79,6 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                   fill="hsl(var(--pearl))"
                   stroke="hsl(var(--chocolate) / 0.55)"
                   strokeWidth="2.5"
-                  strokeLinejoin="round"
-                />
-              </svg>
               {/* Real wax seal image, anchored at the triangle tip */}
               <img
                 src={waxSeal}
@@ -89,6 +86,12 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
                 aria-hidden="true"
                 className="pointer-events-none absolute left-1/2 -translate-x-1/2"
                 style={{
+                  bottom: "-22%",
+                  width: "22%",
+                  filter: "drop-shadow(0 6px 8px rgba(30, 45, 25, 0.45)) drop-shadow(0 1px 2px rgba(0,0,0,0.25))",
+                }}
+              />
+
                   bottom: "-8%",
                   width: "22%",
                   filter: "drop-shadow(0 6px 8px rgba(30, 45, 25, 0.45)) drop-shadow(0 1px 2px rgba(0,0,0,0.25))",
