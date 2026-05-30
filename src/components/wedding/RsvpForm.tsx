@@ -212,7 +212,7 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
             {attending === true && (
               <div className="grid gap-4 animate-fade-in">
                 <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                  Vardas ir pavardė
+                  Vardas
                   <input
                     name="fullName"
                     defaultValue={prefill.first}
@@ -221,20 +221,21 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
                 </label>
 
                 <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                  Meniu pasirinkimas
+                  Maisto pasirinkimas
                   <select
                     name="mealChoice"
                     className="border border-input bg-background px-4 py-3 font-body text-foreground"
                   >
                     <option value="">Pasirinkti</option>
-                    <option value="mesa">Mėsos patiekalas</option>
-                    <option value="zuvis">Žuvies patiekalas</option>
+                    <option value="mesyte">Mėsos patiekalas</option>
+                    <option value="zuvyte">Žuvies patiekalas</option>
                     <option value="vegetariskas">Vegetariškas</option>
+                    <option value="mesyte2">Mėsos patiekalas antras</option>
                   </select>
                 </label>
 
                 <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                  Alergijos / maisto pasirinkimai
+                  Alergijos 
                   <textarea
                     name="dietaryNotes"
                     rows={2}
@@ -246,7 +247,7 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
                 {isCouple && (
                   <>
                     <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                      Vardas ir pavardė
+                      Vardas
                       <input
                         name="partnerFullName"
                         defaultValue={prefill.partnerFirst}
@@ -255,20 +256,21 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
                     </label>
 
                     <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                      Meniu pasirinkimas
+                      Maisto pasirinkimas
                       <select
                         name="partnerMealChoice"
                         className="border border-input bg-background px-4 py-3 font-body text-foreground"
                       >
                         <option value="">Pasirinkti</option>
-                        <option value="mesa">Mėsos patiekalas</option>
-                        <option value="zuvis">Žuvies patiekalas</option>
-                        <option value="vegetariskas">Vegetariškas</option>
+                        <option value="mesyte">Mėsos patiekalas</option>
+                    <option value="zuvyte">Žuvies patiekalas</option>
+                    <option value="vegetariskas">Vegetariškas</option>
+                    <option value="mesyte2">Mėsos patiekalas antras</option>
                       </select>
                     </label>
 
                     <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                      Alergijos / maisto pasirinkimai
+                      Alergijos 
                       <textarea
                         name="partnerDietaryNotes"
                         rows={2}
