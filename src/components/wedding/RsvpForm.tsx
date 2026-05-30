@@ -42,22 +42,34 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
   const isClosed = useMemo(() => Date.now() >= deadline.getTime(), []);
 
   const prefill = useMemo(() => {
-  if (typeof window === "undefined")
+  if (typeof window === "undefined") {
     return { first: "", partnerFirst: "" };
+  }
 
   const raw = new URLSearchParams(window.location.search).get("n") ?? "";
 
-  const normalize = (value: string) =>
-    value.trim().replace(/\//g, " "); 
+  const parsePerson = (str: string) => {
+    if (!str) return { first: "", last: "" };
 
-  const parts = raw
-    .split(",")
-    .map((n) => normalize(n))
-    .filter(Boolean);
+    // STEP 1: / becomes space
+    const cleaned = str.replace(/\//g, " ").trim();
+
+    // STEP 2: split into words
+    const parts = cleaned.split(/\s+/);
+
+    return {
+      first: parts[0] ?? "",
+      last: parts.slice(1).join(" "),
+    };
+  };
+
+  const people = raw.split(",").map(parsePerson);
 
   return {
-    first: parts[0] ?? "",
-    partnerFirst: parts[1] ?? "",
+    first: people[0]?.first ?? "",
+    last: people[0]?.last ?? "",
+    partnerFirst: people[1]?.first ?? "",
+    partnerLast: people[1]?.last ?? "",
   };
 }, []);
 
