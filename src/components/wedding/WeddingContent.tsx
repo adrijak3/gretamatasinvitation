@@ -158,7 +158,7 @@ export const WeddingContent = () => (
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Sparkles className="h-7 w-7 text-copper-glow" />
           <h3 className="mt-5 font-display text-3xl">Aprangos kodas</h3>
-          <p className="mt-2 font-display text-lg italic text-copper-glow">Black Tie / Formal</p>
+          <p className="mt-2 font-display text-lg italic text-copper-glow">Black Tie Optional / Formal</p>
           <p className="mt-3 text-pearl/75">
             Kviečiame rinktis elegantišką formalų vakaro stilių.
           </p>
@@ -169,7 +169,7 @@ export const WeddingContent = () => (
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Mail className="h-7 w-7 text-copper-glow" />
           <p className="mt-5 text-pearl/80">
-            Vietoje gėlių džiugintų putojantis ar Jūsų mėgstamas gėrimas, o materialūs palinkėjimai kukliai telpa vokelyje.
+            Vietoje gėlių džiugintų putojantis ar Jūsų mėgstamas gėrimas, o materialūs palinkėjimai telpa vokelyje.
           </p>
         </article>
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
@@ -226,7 +226,7 @@ export const WeddingContent = () => (
         <div className="mt-8 divide-y divide-chocolate/15 border-y border-chocolate/15 bg-vellum">
           {[
             ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti bent 15 min. anksčiau. Restorane „Elven“ Jūsų lauks nuo 18:00 su pasitikimo taure bei užkandukais."],
-            ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje.\nVakarinė dalis restorane skirta tik suaugusiems."],
+            ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje. Vakarinė dalis restorane skirta tik suaugusiems."],
             ["Iki kada atsakyti?", "Dalyvavimą kviečiame patvirtinti iki 2026 m. liepos 6 d. Po šios datos registracija užsidarys."],
           ].map(([question, answer]) => (
 

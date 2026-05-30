@@ -231,12 +231,12 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
             <Heart className="h-8 w-8" />
           </div>
           <DialogTitle className="font-display text-3xl text-moss-deep">
-            {thanks === "yes" ? "Ačiū, kad būsite kartu!" : "Ačiū, kad pranešėte"}
+            {thanks === "yes" ? "Ačiū, kad būsite kartu!" : "Ačiū, kad pranešėte 🥲"}
           </DialogTitle>
           <DialogDescription className="text-base leading-7 text-muted-foreground">
             {thanks === "yes"
               ? "Su nekantrumu lauksime Jūsų rugsėjo 6 d. Iki greito susitikimo!"
-              : "Gaila, kad negalėsite dalyvauti — apkabiname stipriai. Mintimis būsite su mumis."}
+              : ""}
           </DialogDescription>
         </DialogContent>
       </Dialog>

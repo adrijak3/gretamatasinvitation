@@ -12,7 +12,7 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
   const handleOpen = () => {
     if (opening) return;
     setOpening(true);
-    setTimeout(() => onOpen(), 2200);
+    setTimeout(() => onOpen(), 1100);
   };
 
 
@@ -23,7 +23,7 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
         opening ? "opacity-0" : "opacity-100"
       }`}
       style={{
-        transitionDelay: opening ? "1.6s" : "0s",
+        transitionDelay: opening ? "0.7s" : "0s",
         backgroundColor: "hsl(var(--background))",
         backgroundImage: [
           "radial-gradient(circle at 18% 18%, hsl(var(--moss-soft) / 0.55), transparent 28rem)",
