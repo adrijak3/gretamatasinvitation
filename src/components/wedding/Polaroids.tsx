@@ -50,7 +50,7 @@ export const Polaroids = () => (
         <div className="hidden text-chocolate sm:block">
           <Heart className="h-7 w-7 fill-chocolate/30" />
         </div>
-        <Polaroid name="Matas" role="Jaunikis" rotate="rotate-6" imgSrc={groomChild} flip />
+        <Polaroid name="Matas" role="Jaunikis" rotate="rotate-6" imgSrc={groomChild} />
       </div>
     </div>
   </section>
