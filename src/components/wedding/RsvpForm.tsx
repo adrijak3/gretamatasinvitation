@@ -2,7 +2,12 @@ import { FormEvent, useMemo, useState } from "react";
 import { Heart } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { GOOGLE_SHEETS_WEBHOOK_URL } from "@/config/integrations";
 
@@ -22,7 +27,7 @@ type RsvpFormProps = {
 
 const deadline = new Date("2026-07-07T00:00:00+03:00");
 
-/* ================= FIXED PARSER ================= */
+/* ================= NAME SPLIT ================= */
 const splitName = (full: string | null | undefined) => {
   const value = (full ?? "").trim();
   if (!value) return { first: "", last: "" };
@@ -37,33 +42,25 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
 
   const isClosed = useMemo(() => Date.now() >= deadline.getTime(), []);
 
-  /* ================= FIXED PREFILL ================= */
+  /* ================= PREFILL ================= */
   const prefill = useMemo(() => {
     if (typeof window === "undefined")
-      return { first: "", last: "", partnerFirst: "", partnerLast: "" };
+      return { first: "", partnerFirst: "" };
 
     const raw = new URLSearchParams(window.location.search).get("n") ?? "";
 
-    const parse = (chunk: string) => {
-      const clean = chunk.trim();
-      if (!clean) return { first: "", last: "" };
-
-      const [first, last] = clean.split("/").map((s) => s.trim());
-      return { first: first ?? "", last: last ?? "" };
-    };
-
-    const parts = raw.split(",").map(parse);
+    const firsts = raw
+      .split(/[,;|]/)
+      .map((n) => n.trim().split(/\s+/)[0])
+      .filter(Boolean);
 
     return {
-      first: parts[0]?.first ?? "",
-      last: parts[0]?.last ?? "",
-      partnerFirst: parts[1]?.first ?? "",
-      partnerLast: parts[1]?.last ?? "",
-      hasPartner: !!parts[1]?.first,
+      first: firsts[0] ?? "",
+      partnerFirst: firsts[1] ?? "",
     };
   }, []);
 
-  const isCouple = prefill.hasPartner;
+  const isCouple = !!prefill.partnerFirst;
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -96,11 +93,14 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
       partner_last_name: partnerLastName,
 
       attending,
+
       meal_choice: String(form.get("mealChoice") ?? ""),
       partner_meal_choice: String(form.get("partnerMealChoice") ?? ""),
-      dietary_notes: String(form.get("dietaryNotes") ?? ""),
-      message: String(form.get("message") ?? ""),
 
+      dietary_notes: String(form.get("dietaryNotes") ?? ""),
+      partner_dietary_notes: String(form.get("partnerDietaryNotes") ?? ""),
+
+      message: String(form.get("message") ?? ""),
       submitted_at: new Date().toISOString(),
     };
 
@@ -160,7 +160,7 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
           body: JSON.stringify(payload),
         });
       } catch (e) {
-        console.warn("Webhook error:", e);
+        console.warn(e);
       }
     }
 
@@ -170,142 +170,132 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
   return (
     <section id="rsvp" className="relative overflow-hidden bg-vellum py-20">
 
-      <div className="container relative mx-auto grid gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+      <div className="container mx-auto grid gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr]">
 
         <div>
-          <h2 className="font-display text-5xl font-semibold leading-none text-moss-deep sm:text-6xl">
+          <h2 className="font-display text-5xl font-semibold text-moss-deep">
             Dalyvavimo patvirtinimas
           </h2>
-
-          <p className="mt-6 leading-8 text-muted-foreground">
-            Atsakymo lauksime iki <strong className="font-semibold text-moss-deep">2026 m. liepos 6 d.</strong>
-          </p>
         </div>
 
-        <form onSubmit={submit} className="paper-grain relative grid gap-5 border border-copper/25 bg-pearl p-6 shadow-[0_28px_70px_hsl(var(--moss-deep)/0.14)] sm:p-8">
+        <form onSubmit={submit} className="paper-grain grid gap-5 border bg-pearl p-6">
 
-          <fieldset disabled={isClosed || saving} className="grid gap-5 disabled:opacity-60">
+          {/* ATTENDANCE */}
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Button type="button" onClick={() => setAttending(true)}>
+              Dalyvausiu
+            </Button>
+            <Button type="button" onClick={() => setAttending(false)}>
+              Negalėsiu dalyvauti
+            </Button>
+          </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Button type="button" variant={attending === true ? "moss" : "vellum"} onClick={() => setAttending(true)}>
-                Dalyvausiu
-              </Button>
-              <Button type="button" variant={attending === false ? "moss" : "vellum"} onClick={() => setAttending(false)}>
-                Negalėsiu dalyvauti
-              </Button>
-            </div>
-
-            {attending === true && (
-              <div className="grid gap-5 animate-fade-in">
-
-                {/* GUEST 1 */}
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                    Vardas
-                    <input
-                      name="firstName"
-                      defaultValue={`${prefill.first} ${prefill.last}`.trim()}
-                      className="border border-input bg-background px-4 py-3 font-body text-foreground"
-                    />
-                  </label>
-
-                  <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                    Pavardė
-                    <input
-                      name="lastName"
-                      defaultValue=""
-                      className="border border-input bg-background px-4 py-3 font-body text-foreground"
-                    />
-                  </label>
-                </div>
-
-                <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                  Meniu pasirinkimas
-                  <select name="mealChoice" className="border border-input bg-background px-4 py-3 font-body text-foreground">
-                    <option value="">Pasirinkti</option>
-                    <option value="mesa">Mėsos patiekalas</option>
-                    <option value="zuvis">Žuvies patiekalas</option>
-                    <option value="vegetariskas">Vegetariškas</option>
-                  </select>
+          {/* ================= GUEST 1 ================= */}
+          {attending === true && (
+            <div className="grid gap-4 border p-5">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label>
+                  Vardas / Pavardė
+                  <input
+                    name="firstName"
+                    defaultValue={prefill.first}
+                    className="border px-4 py-3"
+                  />
                 </label>
 
-                {/* GUEST 2 ONLY IF EXISTS */}
-                {isCouple && (
-                  <>
-                    <div className="my-2 h-px bg-gradient-to-r from-transparent via-copper/40 to-transparent" />
-
-                    <p className="font-display text-xl text-moss-deep">
-                      Antras svečias
-                    </p>
-
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                        Vardas
-                        <input
-                          name="partnerFirstName"
-                          defaultValue={prefill.partnerFirst}
-                          className="border border-input bg-background px-4 py-3 font-body text-foreground"
-                        />
-                      </label>
-
-                      <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                        Pavardė
-                        <input
-                          name="partnerLastName"
-                          defaultValue={prefill.partnerLast}
-                          className="border border-input bg-background px-4 py-3 font-body text-foreground"
-                        />
-                      </label>
-                    </div>
-
-                    <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                      Meniu pasirinkimas
-                      <select name="partnerMealChoice" className="border border-input bg-background px-4 py-3 font-body text-foreground">
-                        <option value="">Pasirinkti</option>
-                        <option value="mesa">Mėsos patiekalas</option>
-                        <option value="zuvis">Žuvies patiekalas</option>
-                        <option value="vegetariskas">Vegetariškas</option>
-                      </select>
-                    </label>
-                  </>
-                )}
-
-                <label className="grid gap-2 text-sm font-semibold text-moss-deep">
-                  Alergijos
-                  <textarea name="dietaryNotes" rows={3} className="border border-input bg-background px-4 py-3 font-body text-foreground" />
+                <label>
+                  Pavardė
+                  <input
+                    name="lastName"
+                    className="border px-4 py-3"
+                  />
                 </label>
-
               </div>
-            )}
 
-            {attending !== null && (
-              <label className="grid gap-2 text-sm font-semibold text-moss-deep animate-fade-in">
-                Žinutė jauniesiems
-                <textarea name="message" rows={4} className="border border-input bg-background text-foreground px-4 py-3 font-body" />
+              <label>
+                Meniu pasirinkimas
+                <select name="mealChoice" className="border px-4 py-3">
+                  <option value="">Pasirinkti</option>
+                  <option value="mesa">Mėsos</option>
+                  <option value="zuvis">Žuvies</option>
+                  <option value="vegetariskas">Vegetariškas</option>
+                </select>
               </label>
-            )}
 
-            {attending !== null && (
-              <Button type="submit" variant="invitation" size="lg" className="animate-fade-in">
-                {saving ? "Saugoma..." : isClosed ? "Registracija uždaryta" : "Išsiųsti atsakymą"}
-              </Button>
-            )}
+              <label>
+                Alergijos / maisto pasirinkimai
+                <textarea name="dietaryNotes" rows={2} className="border px-4 py-3" />
+              </label>
+            </div>
+          )}
 
-          </fieldset>
+          {/* ================= GUEST 2 ================= */}
+          {attending === true && isCouple && (
+            <div className="grid gap-4 border p-5">
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label>
+                  Vardas
+                  <input
+                    name="partnerFirstName"
+                    defaultValue={prefill.partnerFirst}
+                    className="border px-4 py-3"
+                  />
+                </label>
+
+                <label>
+                  Pavardė
+                  <input
+                    name="partnerLastName"
+                    className="border px-4 py-3"
+                  />
+                </label>
+              </div>
+
+              <label>
+                Meniu pasirinkimas
+                <select name="partnerMealChoice" className="border px-4 py-3">
+                  <option value="">Pasirinkti</option>
+                  <option value="mesa">Mėsos</option>
+                  <option value="zuvis">Žuvies</option>
+                  <option value="vegetariskas">Vegetariškas</option>
+                </select>
+              </label>
+
+              <label>
+                Alergijos / maisto pasirinkimai
+                <textarea name="partnerDietaryNotes" rows={2} className="border px-4 py-3" />
+              </label>
+            </div>
+          )}
+
+          {/* MESSAGE */}
+          {attending !== null && (
+            <textarea name="message" className="border px-4 py-3" />
+          )}
+
+          {/* SUBMIT */}
+          {attending !== null && (
+            <Button type="submit">
+              {saving ? "Saugoma..." : "Siųsti"}
+            </Button>
+          )}
+
         </form>
       </div>
 
+      {/* THANK YOU */}
       <Dialog open={thanks !== null} onOpenChange={(o) => !o && setThanks(null)}>
-        <DialogContent className="border-copper/30 bg-pearl text-center">
-          <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-copper/15 text-copper animate-scale-in">
-            <Heart className="h-8 w-8" />
+        <DialogContent className="text-center">
+          <div className="mx-auto h-16 w-16 rounded-full bg-copper/15 grid place-items-center">
+            <Heart />
           </div>
 
           <DialogTitle className="font-display text-3xl text-moss-deep">
-            {thanks === "yes" ? "Ačiū, kad būsite kartu!" : "Ačiū, kad pranešėte!"}
+            Ačiū!
           </DialogTitle>
 
-          <DialogDescription className="text-base leading-7 text-muted-foreground" />
+          <DialogDescription />
         </DialogContent>
       </Dialog>
 
