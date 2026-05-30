@@ -12,18 +12,18 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
   const handleOpen = () => {
     if (opening) return;
     setOpening(true);
-    setTimeout(() => onOpen(), 2200);
+    setTimeout(() => onOpen(), 1100);
   };
 
 
 
   return (
     <div
-      className={`fixed inset-0 z-50 grid place-items-center overflow-y-auto px-4 py-8 text-foreground transition-opacity duration-700 ${
+      className={`fixed inset-0 z-50 grid place-items-center overflow-y-auto px-4 py-8 text-foreground transition-opacity duration-500 ${
         opening ? "opacity-0" : "opacity-100"
       }`}
       style={{
-        transitionDelay: opening ? "1.6s" : "0s",
+        transitionDelay: opening ? "0.7s" : "0s",
         backgroundColor: "hsl(var(--background))",
         backgroundImage: [
           "radial-gradient(circle at 18% 18%, hsl(var(--moss-soft) / 0.55), transparent 28rem)",
@@ -60,7 +60,7 @@ export const OpeningLetter = ({ greeting, onOpen }: OpeningLetterProps) => {
 
             {/* Envelope flap with triangle outline + wax seal */}
             <div
-              className={`absolute -top-px left-0 right-0 z-20 origin-top transition-transform duration-1000 ${
+              className={`absolute -top-px left-0 right-0 z-20 origin-top transition-transform duration-500 ${
                 opening ? "[transform:rotateX(-180deg)]" : ""
               }`}
               style={{
