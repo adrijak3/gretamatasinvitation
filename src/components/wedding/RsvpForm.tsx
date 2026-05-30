@@ -20,17 +20,18 @@ type RsvpFormProps = {
   fallbackSlug: string;
 };
 
+const deadline = new Date("2026-07-07T00:00:00+03:00");
+
 export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
   const [attending, setAttending] = useState<boolean | null>(null);
   const [saving, setSaving] = useState(false);
   const [thanks, setThanks] = useState<null | "yes" | "no">(null);
 
-  const deadline = new Date("2026-07-07T00:00:00+03:00");
   const isClosed = useMemo(() => Date.now() >= deadline.getTime(), []);
 
-  // ✅ SAFE PARSER
+  // ✅ FIXED PARSER (Name/Surname format)
   const prefill = useMemo(() => {
-    if (typeof window === "undefined") return { guests: [] as { first: string; last: string }[] };
+    if (typeof window === "undefined") return { guest1: null, guest2: null };
 
     const raw = new URLSearchParams(window.location.search).get("n") ?? "";
 
@@ -38,22 +39,28 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
       const clean = chunk.trim();
       if (!clean) return null;
 
-      const [first, last] = clean.split("-").map((s) => s.trim());
+      const [first, last] = clean.split("/").map((s) => s.trim());
 
       if (!first) return null;
 
-      return { first, last: last ?? "" };
+      return {
+        first,
+        last: last ?? "",
+      };
     };
 
+    const parts = raw
+      .split(",")
+      .map(parsePerson)
+      .filter(Boolean) as { first: string; last: string }[];
+
     return {
-      guests: raw
-        .split(",")
-        .map(parsePerson)
-        .filter(Boolean) as { first: string; last: string }[],
+      guest1: parts[0] ?? null,
+      guest2: parts[1] ?? null,
     };
   }, []);
 
-  const guests = prefill.guests;
+  const isCouple = !!prefill.guest2;
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -73,20 +80,19 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
     const payload = {
       slug: guest?.slug ?? fallbackSlug,
 
-      first_name: String(form.get("firstName_0") ?? "").trim(),
-      last_name: String(form.get("lastName_0") ?? "").trim(),
+      first_name: String(form.get("firstName") ?? "").trim(),
+      last_name: String(form.get("lastName") ?? "").trim(),
 
-      partner_first_name: String(form.get("firstName_1") ?? "").trim(),
-      partner_last_name: String(form.get("lastName_1") ?? "").trim(),
+      partner_first_name: String(form.get("partnerFirstName") ?? "").trim(),
+      partner_last_name: String(form.get("partnerLastName") ?? "").trim(),
 
-      meal_choice: String(form.get("mealChoice_0") ?? ""),
-      partner_meal_choice: String(form.get("mealChoice_1") ?? ""),
+      meal_choice: String(form.get("mealChoice") ?? ""),
+      partner_meal_choice: String(form.get("partnerMealChoice") ?? ""),
 
-      dietary_notes: String(form.get("dietaryNotes_0") ?? ""),
-      partner_dietary_notes: String(form.get("dietaryNotes_1") ?? ""),
+      dietary_notes: String(form.get("dietaryNotes") ?? ""),
+      message: String(form.get("message") ?? ""),
 
       attending,
-      message: String(form.get("message") ?? ""),
 
       submitted_at: new Date().toISOString(),
     };
@@ -147,7 +153,7 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
           body: JSON.stringify(payload),
         });
       } catch (e) {
-        console.warn("Webhook error:", e);
+        console.warn(e);
       }
     }
 
@@ -158,14 +164,12 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
     <section className="relative overflow-hidden bg-vellum py-20">
       <div className="container mx-auto grid gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr]">
 
-        {/* LEFT */}
         <div>
           <h2 className="font-display text-5xl text-moss-deep">
             Dalyvavimo patvirtinimas
           </h2>
         </div>
 
-        {/* FORM */}
         <form onSubmit={submit} className="grid gap-5 border bg-pearl p-6">
 
           {/* ATTENDANCE */}
@@ -178,64 +182,75 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
             </Button>
           </div>
 
-          {/* GUESTS */}
-          {attending === true &&
-            guests.map((g, idx) => (
-              <div key={idx} className="grid gap-4 border p-4">
+          {/* GUEST 1 */}
+          {attending === true && (
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label>
+                Vardas
+                <input
+                  name="firstName"
+                  defaultValue={prefill.guest1?.first ?? ""}
+                  required
+                />
+              </label>
 
-                <div className="grid gap-4 sm:grid-cols-2">
+              <label>
+                Pavardė
+                <input
+                  name="lastName"
+                  defaultValue={prefill.guest1?.last ?? ""}
+                  required
+                />
+              </label>
+            </div>
+          )}
 
-                  <label>
-                    Vardas
-                    <input
-                      name={`firstName_${idx}`}
-                      defaultValue={g.first}
-                      required
-                      className="border px-4 py-3"
-                    />
-                  </label>
-
-                  <label>
-                    Pavardė
-                    <input
-                      name={`lastName_${idx}`}
-                      defaultValue={g.last}
-                      required
-                      className="border px-4 py-3"
-                    />
-                  </label>
-
-                </div>
-
+          {/* GUEST 2 (ONLY IF EXISTS) */}
+          {attending === true && isCouple && (
+            <>
+              <div className="grid gap-4 sm:grid-cols-2">
                 <label>
-                  Meniu pasirinkimas
-                  <select name={`mealChoice_${idx}`} className="border px-4 py-3">
-                    <option value="">Pasirinkti</option>
-                    <option value="mesa">Mėsos</option>
-                    <option value="zuvis">Žuvies</option>
-                    <option value="vegetariskas">Vegetariškas</option>
-                  </select>
-                </label>
-
-                <label>
-                  Alergijos / pastabos
-                  <textarea
-                    name={`dietaryNotes_${idx}`}
-                    rows={2}
-                    className="border px-4 py-3"
+                  Vardas
+                  <input
+                    name="partnerFirstName"
+                    defaultValue={prefill.guest2?.first ?? ""}
+                    required
                   />
                 </label>
 
+                <label>
+                  Pavardė
+                  <input
+                    name="partnerLastName"
+                    defaultValue={prefill.guest2?.last ?? ""}
+                    required
+                  />
+                </label>
               </div>
-            ))}
+            </>
+          )}
+
+          {/* MENU */}
+          {attending === true && (
+            <label>
+              Meniu pasirinkimas
+              <select name="mealChoice">
+                <option value="">Pasirinkti</option>
+                <option value="mesa">Mėsos</option>
+                <option value="zuvis">Žuvies</option>
+                <option value="vegetariskas">Vegetariškas</option>
+              </select>
+            </label>
+          )}
+
+          {/* ALLERGIES */}
+          {attending === true && (
+            <textarea name="dietaryNotes" placeholder="Alergijos / pastabos" />
+          )}
 
           {/* MESSAGE */}
           {attending !== null && (
-            <textarea
-              name="message"
-              placeholder="Žinutė jauniesiems..."
-              className="border px-4 py-3"
-            />
+            <textarea name="message" placeholder="Žinutė jauniesiems..." />
           )}
 
           {/* SUBMIT */}
