@@ -42,14 +42,24 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
   const isClosed = useMemo(() => Date.now() >= deadline.getTime(), []);
 
   const prefill = useMemo(() => {
-    if (typeof window === "undefined") return { first: "", partnerFirst: "" };
-    const raw = new URLSearchParams(window.location.search).get("n") ?? "";
-    const firsts = raw
-      .split(/[,;|]/)
-      .map((n) => n.trim().split(/\s+/)[0])
-      .filter(Boolean);
-    return { first: firsts[0] ?? "", partnerFirst: firsts[1] ?? "" };
-  }, []);
+  if (typeof window === "undefined")
+    return { first: "", partnerFirst: "" };
+
+  const raw = new URLSearchParams(window.location.search).get("n") ?? "";
+
+  const normalize = (value: string) =>
+    value.trim().replace(/\//g, " "); 
+
+  const parts = raw
+    .split(",")
+    .map((n) => normalize(n))
+    .filter(Boolean);
+
+  return {
+    first: parts[0] ?? "",
+    partnerFirst: parts[1] ?? "",
+  };
+}, []);
 
   const isCouple = !!prefill.partnerFirst || (guest?.party_size ?? 1) >= 2;
 
