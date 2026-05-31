@@ -36,9 +36,9 @@ const ManIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const timeline = [
-  { time: "14:00", title: "Santuokos ceremonija", icon: Rings, text: "Šv. Kazimiero bažnyčia, Vilnius." },
+  { time: "14:00", title: "Santuokos ceremonija", icon: Rings, text: "Vilniaus šv. Kazimiero bažnyčia" },
   { time: "14:45", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką bažnyčios kiemelyje." },
-  { time: "17:30–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N-20)." },
+  { time: "17:30–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N-20)" },
 ];
 
 const WaveDivider = ({ flip = false, fill = "hsl(var(--vellum))" }: { flip?: boolean; fill?: string }) => (
@@ -225,9 +225,9 @@ export const WeddingContent = () => (
         <p className="font-display italic text-3xl uppercase tracking-[0.45em] text-chocolate">Klausimai</p>
         <div className="mt-8 divide-y divide-chocolate/15 border-y border-chocolate/15 bg-vellum">
           {[
-            ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti nuo 13:30. Restorane „Elven“ Jūsų lauks nuo 17:15 su pasitikimo taure bei užkandukais."],
-            ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje. Vakarinė dalis restorane skirta tik suaugusiems."],
-            ["Iki kada atsakyti?", "Dalyvavimą prašome patvirtinti iki 2026 m. liepos 6 d. Po šios datos registracija užsidarys."],
+            ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti nuo 13:30. <br /> Restorane „Elven“ Jūsų lauks nuo 17:15 su pasitikimo taure bei užkandukais."],
+            ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje. <br /> Vakarinė dalis restorane skirta tik suaugusiems."],
+            ["Iki kada atsakyti?", "Dalyvavimą prašome patvirtinti iki 2026 m. liepos 6 d. <br /> Po šios datos registracija užsidarys."],
           ].map(([question, answer]) => (
 
             <details key={question} className="group p-5">
