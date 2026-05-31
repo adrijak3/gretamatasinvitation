@@ -47,7 +47,7 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
   }
 
   const raw = new URLSearchParams(window.location.search).get("n") ?? "";
-
+window.history.replaceState({}, "", window.location.pathname);
   const parsePerson = (str: string) => {
     if (!str) return { first: "", last: "" };
 
