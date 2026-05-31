@@ -36,7 +36,7 @@ const ManIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const timeline = [
-  { time: "13:45", title: "Santuokos ceremonija", icon: Rings, text: "Šv. Kazimiero bažnyčia, Vilnius." },
+  { time: "14:00", title: "Santuokos ceremonija", icon: Rings, text: "Šv. Kazimiero bažnyčia, Vilnius." },
   { time: "14:45", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką bažnyčios kiemelyje." },
   { time: "17:30–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N-20)." },
 ];
@@ -66,7 +66,7 @@ export const WeddingContent = () => (
             <Church className="mt-1 h-6 w-6 text-chocolate" />
             <div>
               <h3 className="font-display text-3xl text-chocolate">Šv. Kazimiero bažnyčia</h3>
-              <p className="text-chocolate/70">Santuokos ceremonija 13:45</p>
+              <p className="text-chocolate/70">Santuokos ceremonija 14:00</p>
             </div>
           </div>
           <div className="flex gap-4">
