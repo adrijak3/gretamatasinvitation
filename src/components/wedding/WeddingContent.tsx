@@ -169,7 +169,7 @@ export const WeddingContent = () => (
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
           <Mail className="h-7 w-7 text-copper-glow" />
           <p className="mt-5 text-pearl/80">
-            Vietoje gėlių džiugintų putojantis ar Jūsų mėgstamas gėrimas, o materialūs palinkėjimai telpa vokelyje.
+            Vietoje gėlių džiugintų putojantis gėrimas; materialūs palinkėjimai telpa vokelyje.
           </p>
         </article>
         <article className="border border-pearl/15 bg-pearl/10 p-6 backdrop-blur animate-fade-in hover:bg-pearl/20 hover:-translate-y-1 transition-all duration-300">
