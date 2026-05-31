@@ -227,10 +227,10 @@ export const RsvpForm = ({ guest, fallbackSlug }: RsvpFormProps) => {
                     className="border border-input bg-background px-4 py-3 font-body text-foreground"
                   >
                     <option value="">Pasirinkti</option>
-                    <option value="mesyte">Mėsos patiekalas</option>
-                    <option value="zuvyte">Žuvies patiekalas</option>
-                    <option value="vegetariskas">Vegetariškas</option>
-                    <option value="mesyte2">Mėsos patiekalas antras</option>
+                    <option value="drakoniukas">Jūros drakoniukas, karamelizuotų svogūnų emulsija, gelteklės tyrė</option>
+                    <option value="antyte">Antienos krūtinėlė, porai, obuolių sidro padažas</option>
+                    <option value="steikas">Jautienos flank steikas, raugintos mėlynės, pastarnokas</option>
+                    <option value="vegetariskas">Keptas kalafioras, tahini, pistacijų pesto, migdolų padažas</option>
                   </select>
                 </label>
 
