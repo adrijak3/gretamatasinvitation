@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 
-const target = new Date("2026-09-06T15:00:00+03:00").getTime();
+const target = new Date("2026-09-06T14:00:00+03:00").getTime();
 
 const getTime = () => {
   const distance = Math.max(0, target - Date.now());
