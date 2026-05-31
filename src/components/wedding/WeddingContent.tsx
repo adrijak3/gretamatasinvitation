@@ -36,9 +36,9 @@ const ManIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const timeline = [
-  { time: "15:00", title: "Santuokos ceremonija", icon: Rings, text: "Šv. Kazimiero bažnyčia, Vilnius." },
-  { time: "16:30", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką bažnyčios kiemelyje." },
-  { time: "18:00–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N-20)." },
+  { time: "13:45", title: "Santuokos ceremonija", icon: Rings, text: "Šv. Kazimiero bažnyčia, Vilnius." },
+  { time: "14:45", title: "Šampano staliukas", icon: Champagne, text: "Kviečiame pakelti taurę už mūsų santuoką bažnyčios kiemelyje." },
+  { time: "17:30–23:59", title: "Šventinis vakaras", icon: PlateFood, text: "Restoranas „Elven\u201C (N-20)." },
 ];
 
 const WaveDivider = ({ flip = false, fill = "hsl(var(--vellum))" }: { flip?: boolean; fill?: string }) => (
@@ -66,14 +66,14 @@ export const WeddingContent = () => (
             <Church className="mt-1 h-6 w-6 text-chocolate" />
             <div>
               <h3 className="font-display text-3xl text-chocolate">Šv. Kazimiero bažnyčia</h3>
-              <p className="text-chocolate/70">Santuokos ceremonija 15:00</p>
+              <p className="text-chocolate/70">Santuokos ceremonija 13:45</p>
             </div>
           </div>
           <div className="flex gap-4">
             <UtensilsCrossed className="mt-1 h-6 w-6 text-chocolate" />
             <div>
               <h3 className="font-display text-3xl text-chocolate">Restoranas „Elven“</h3>
-              <p className="text-chocolate/70">Šventinis vakaras 18:00</p>
+              <p className="text-chocolate/70">Šventinis vakaras 17:30</p>
             </div>
           </div>
         </div>
@@ -225,9 +225,9 @@ export const WeddingContent = () => (
         <p className="font-display italic text-3xl uppercase tracking-[0.45em] text-chocolate">Klausimai</p>
         <div className="mt-8 divide-y divide-chocolate/15 border-y border-chocolate/15 bg-vellum">
           {[
-            ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti bent 15 min. anksčiau. Restorane „Elven“ Jūsų lauks nuo 18:00 su pasitikimo taure bei užkandukais."],
+            ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti nuo 13:30. Restorane „Elven“ Jūsų lauks nuo 17:30 su pasitikimo taure bei užkandukais."],
             ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje. Vakarinė dalis restorane skirta tik suaugusiems."],
-            ["Iki kada atsakyti?", "Dalyvavimą kviečiame patvirtinti iki 2026 m. liepos 6 d. Po šios datos registracija užsidarys."],
+            ["Iki kada atsakyti?", "Dalyvavimą prašome patvirtinti iki 2026 m. liepos 6 d. Po šios datos registracija užsidarys."],
           ].map(([question, answer]) => (
 
             <details key={question} className="group p-5">
@@ -246,7 +246,7 @@ export const WeddingContent = () => (
     </section>
 
     <section className="container mx-auto max-w-2xl px-6 pb-24 text-center">
-      <p className="font-display text-3xl italic text-chocolate sm:text-4xl">Lauksime Jūsų atvykstant</p>
+      <p className="font-display text-3xl italic text-chocolate sm:text-4xl">Lauksime Jūsų atvykstant!</p>
       <p className="mt-4 font-display text-xl text-chocolate/80">Su meile,<br />Greta ir Matas</p>
     </section>
   </main>
