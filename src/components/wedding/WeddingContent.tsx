@@ -177,7 +177,7 @@ export const WeddingContent = () => (
           <Mail className="h-7 w-7 text-copper-glow" />
           <h3 className="mt-5 font-display text-3xl">Dalyvavimas</h3>
           <p className="mt-3 text-pearl/75">
-            Atsakymo lauksime iki 2026 m. liepos 6 d. Po šios datos registracija vakarinei šventės daliai užsidarys.
+            Atsakymo lauksime iki 2026 m. rugpjūčio 2 d. Po šios datos registracija vakarinei šventės daliai užsidarys.
           </p>
           <p className="mt-3 text-sm italic text-pearl/60">
             Nesulaukę atsakymo, suprasime, kad vakarinėje šventės dalyje nedalyvausite.
@@ -228,7 +228,7 @@ export const WeddingContent = () => (
           {[
             ["Kada atvykti?", "Į santuokos ceremoniją kviečiame atvykti nuo 13:30.\n\nRestorane „Elven“ Jūsų lauks nuo 17:15 su pasitikimo taure bei užkandukais."],
             ["Ar galime atvykti su vaikais?", "Mažųjų mielai lauksime santuokos ceremonijoje bažnyčioje.\n\nVakarinė dalis restorane skirta tik suaugusiems."],
-            ["Iki kada atsakyti?", "Dalyvavimą prašome patvirtinti iki 2026 m. liepos 6 d.\n\nPo šios datos registracija užsidarys."],
+            ["Iki kada atsakyti?", "Dalyvavimą prašome patvirtinti iki 2026 m. rugpjūčio 2 d.\n\nPo šios datos registracija užsidarys."],
           ].map(([question, answer]) => (
 
             <details key={question} className="group p-5">
