@@ -184,7 +184,7 @@ window.history.replaceState({}, "", window.location.pathname);
             Dalyvavimo patvirtinimas
           </h2>
           <p className="mt-4 font-body text-base leading-7 text-muted-foreground">
-            Atsakymo lauksime iki 2026 m. liepos 6 d. Po šios datos registracija užsidarys.
+            Atsakymo lauksime iki 2026 m. rugpjūčio 2 d. Po šios datos registracija užsidarys.
           </p>
         </div>
 
